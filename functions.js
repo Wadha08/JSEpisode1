@@ -21,14 +21,7 @@ function greet(name) {
  * - returns true if it's odd, false otherwise
  */
 function isOdd(n) {
-  if(n%2==0)
-  {
-    return false;
-  }
-  else {
-  return true;
-}
-
+ return !!(n%2);
 }
 
 /**
@@ -43,7 +36,10 @@ function isOdd(n) {
  * Hint: you can solve this without writing any loops!
  */
 function oddsSmallerThan(n) {
- 
+ if(isOdd(n))
+  n--;
+ return n/2;
+
 }
 
 /**
@@ -85,7 +81,20 @@ function squareOrDouble(n) {
 function ageFromBirthDate(birthDate) {
   const _MS_PER_YEAR = 1000 * 60 * 60 * 24 * 365;
 
-  // Your code here
+  const year = birthDate.slice(0,4);
+  const month = birthDate.slice(4,6);
+  const day = birthDate.slice(6);
+
+
+  const today = new Date();
+  const dob = new Date(`${month}/${day}/${year}`);
+
+  let age = today - dob;
+  age = age/_MS_PER_YEAR;
+  return Math.floor(age);
+
+
+
 }
 
 module.exports = {
